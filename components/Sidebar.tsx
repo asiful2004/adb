@@ -12,12 +12,12 @@ interface SidebarProps {
   branding?: BrandingConfig;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar, user, branding }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar, user, branding, onLogout }) => {
   const location = useLocation();
 
   if (!user) return null;
 
-  // Render all nav items since auth is removed
+  // Render all nav items
   const filteredNavItems = NAV_ITEMS;
 
   return (
@@ -125,9 +125,20 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar, user, branding
         })}
       </nav>
 
-      {/* Simplified Footer - Brand Identity Only */}
-      <div className="p-6 bg-zinc-950/50 border-t border-zinc-900 text-center">
-        <p className="text-[9px] text-zinc-800 font-mono font-bold uppercase tracking-widest">
+      {/* Footer Actions */}
+      <div className="p-4 bg-zinc-950/80 border-t border-zinc-900 flex flex-col gap-2">
+        <button 
+          onClick={onLogout}
+          className={`
+            flex items-center gap-4 px-4 py-3 rounded-xl transition-all group hover:bg-red-500/10 hover:text-red-400 text-zinc-600
+            ${!isOpen ? 'justify-center' : ''}
+          `}
+          title="Logout"
+        >
+          <ICONS.LogOut className="w-5 h-5" />
+          {isOpen && <span className="text-xs font-bold uppercase tracking-widest">Terminate Session</span>}
+        </button>
+        <p className="text-[9px] text-zinc-800 font-mono font-bold uppercase tracking-widest text-center">
           {isOpen ? `${branding?.title.toUpperCase() || 'EORVEX'} CORE v1.1.0` : 'E.C.'}
         </p>
       </div>

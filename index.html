@@ -21,6 +21,8 @@
             background-color: var(--abyss);
             color: #fafafa;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
@@ -64,5 +66,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- CRITICAL: Import the entry point -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
