@@ -1,0 +1,8 @@
+{
+  "name": "Eorvex Management Panel",
+  "description": "An extreme-performance, modular internal business dashboard for managing high-volume subscription services, digital assets, and financial calculations.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
